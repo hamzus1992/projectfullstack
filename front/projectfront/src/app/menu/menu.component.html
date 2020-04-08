@@ -1,0 +1,18 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div>
+        <a href="https://facebook.com" class="navbar-brand">facebook</a>
+      </div>
+    
+      <ul class="navbar-nav">
+        <li *ngIf="this.authenticate.isUserLoggedIn()"><a routerLink="/welcome/hamzus1992" class="nav-link">HOME</a></li>
+        <li *ngIf="this.authenticate.isUserLoggedIn()"><a routerLink="/todos" class="nav-link">TODOS</a></li>
+      </ul>
+
+      <ul class="navbar-nav navbar-collapse justify-content-end">
+        <li *ngIf="!this.authenticate.isUserLoggedIn()"><a routerLink="/login" class="nav-link">Login</a></li>
+        <li *ngIf="this.authenticate.isUserLoggedIn()"><a routerLink="." class="nav-link">Logout</a></li>
+      </ul>
+  </nav>
+</header>
+
