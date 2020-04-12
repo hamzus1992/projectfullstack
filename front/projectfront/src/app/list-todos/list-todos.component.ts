@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoDataService } from '../service/data/todo-data.service';
+import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export class Todo {
   constructor(
     public id : number,
+    public username:string,
     public description : string,
-    public done :boolean,
-    public targetDate : Date
+    public targetDate : Date,
+    public active :boolean
   ){
 
   }
@@ -20,20 +24,42 @@ export class Todo {
 })
 export class ListTodosComponent implements OnInit {
 
-  todos = [
-    new Todo(1,'Learn to Dance', false, new Date()),
-    new Todo(2,'Become an Expert at Angular', false, new Date()),
-    new Todo(3,'Visit Tunisia', false, new Date()),
-  ]
+  todos :Todo[]
+  message = ''
 
-  todo = {
-    id:1,
-    description : 'Learn to Dance'
+  constructor(private todoDataService : TodoDataService,
+    private router :Router
+    ) { }
+  refreshTodos() {
+    this.todoDataService.findAll('hamzus1992').subscribe(
+      response => this.handleSuccessfulResponse(response),
+      error => this.handleErrorResponse(error)
+    )
   }
 
-  constructor() { }
-
   ngOnInit() {
+    this.refreshTodos()
+    }
+
+  deleteTodo(id) {
+    this.todoDataService.delete('hamzus1992',id).subscribe(
+      response => {
+        this.refreshTodos();
+      }
+    )
+  }
+  updateTodo(id) {
+    this.router.navigate(['todos',id]);
+  }
+  addTodo() {
+    this.router.navigate(['todos',-1]);
+  }
+
+  handleSuccessfulResponse(response){
+    this.todos =response
+  }
+  handleErrorResponse(error){
+    this.message = error.error.message
   }
 
 }
