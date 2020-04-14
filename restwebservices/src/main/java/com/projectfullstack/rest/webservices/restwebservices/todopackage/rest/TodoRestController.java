@@ -2,16 +2,13 @@ package com.projectfullstack.rest.webservices.restwebservices.todopackage.rest;
 
 import com.projectfullstack.rest.webservices.restwebservices.todopackage.entity.Todo;
 import com.projectfullstack.rest.webservices.restwebservices.todopackage.service.TodoHardCodeService;
-import com.sun.xml.internal.rngom.util.Uri;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.PostUpdate;
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
