@@ -3,6 +3,7 @@ node {
    git 'https://github.com/hamzus1992/projectfullstack'
   }
   stage('Compile-Checkout') {
-   sh 'mvn package'
+   def mvnHome = tool name: '', type: 'maven'
+    sh "${mvnHome}/bin/mvn package"
   }
 }
