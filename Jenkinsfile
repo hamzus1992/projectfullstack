@@ -3,9 +3,9 @@ node {
    git 'https://github.com/hamzus1992/projectfullstack'
   }
   stage('Compile-Checkout') {
-   def mvnHome = tool name: '', type: 'maven'
+   def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
     dir('/restwebservices') {
-     sh "${mvnHome}/bin/mvn package"
+     sh "${mvn}/bin/mvn package"
 }
    
   }
