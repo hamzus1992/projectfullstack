@@ -7,6 +7,9 @@ node {
     dir('./restwebservices') {
      sh "${mvn}/bin/mvn package"
 }
+      dir('front/projectfront/') {
+     sh 'npm install'
+      }
    
   }
 }
