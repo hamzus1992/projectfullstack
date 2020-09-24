@@ -4,7 +4,7 @@ node {
   }
   stage('Compile-Checkout') {
    def mvn = tool name: 'M3', type: 'maven'
-    dir('/restwebservices') {
+    dir('./restwebservices') {
      sh "${mvn}/bin/mvn package"
 }
    
