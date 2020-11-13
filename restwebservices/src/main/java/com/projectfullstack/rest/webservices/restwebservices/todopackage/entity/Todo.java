@@ -3,7 +3,7 @@ package com.projectfullstack.rest.webservices.restwebservices.todopackage.entity
 import java.util.Date;
 
 public class Todo {
-
+//id TODO
     private long id;
     private String username;
     private String description;
